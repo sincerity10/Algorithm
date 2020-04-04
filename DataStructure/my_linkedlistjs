@@ -120,6 +120,6 @@ mylinkedlist.delete(0) //3745
 mylinkedlist.insert(0,14) //14,3,7,4,5
 mylinkedlist.delete(1);
 mylinkedlist.delete(3);
-mylinkedlist.insert(3,15);
+mylinkedlist.insert(3,11);
 mylinkedlist.traverse();
 //console.log(mylinkedlist.)
