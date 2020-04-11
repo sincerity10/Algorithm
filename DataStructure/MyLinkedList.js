@@ -1,12 +1,18 @@
-//
+// 알고리즘 스터디 - 자료구조: Linked List
+// 초기 작성: 20.04.04
+// Review at 20.04.11
+
+// Node 객체를 정의하는 Class
 class Node {
     constructor(value,next=null){
         this.value=value;
-        this.next=next
+        this.next=next;
     }
-  }
+}
 
+// Linked List 구조체 및 기능정의
 class LinkedList {
+    // Linkd List의 필수요소인 head와 tail 정의
     constructor(){
         this.head=null;
         this.tail=null;
