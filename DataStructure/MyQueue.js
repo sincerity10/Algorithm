@@ -1,3 +1,6 @@
+// 알고리즘 스터디 - 자료구조: Queue
+// 초기 작성: 20.04.11
+
 class Node {
     constructor(value,next=null){
         this.value=value;

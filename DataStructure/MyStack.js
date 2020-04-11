@@ -1,4 +1,4 @@
-// 알고리즘 스터디 - 자료구조: Linked List
+// 알고리즘 스터디 - 자료구조: Stack
 // 초기 작성: 20.04.11
 
 import LinkedList from 'mylinkedlist';
