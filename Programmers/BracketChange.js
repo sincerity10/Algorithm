@@ -1,59 +1,45 @@
 function solution(p) {
-    //var answer = '';
+    //과정 1수행
     if(p==="" || IsPerfect(p)){return p;}
-    var u = p.slice(0,balancer(p)+1);
-    var v = p.slice(balancer(p)+1);
+    let cutter = balancer(p)+1 ;
+    // 과정 2수행 실제 구분자는 balancer에서 수행
+    var u = p.slice(0,cutter);
+    var v = p.slice(cutter);
+    
+    //과정 3의 수행
     if (IsPerfect(u)){
-        //console.log(u);
         return u + solution(v);
     }
     else{
-        console.log(u);
-        console.log(v);
+        // 4-1 부터 4-3 수행
+        let result = '(' + solution(v) +')';
+        // 4-4 수행: u의 마지막 값 and 첫 값 제외 + 뒤집기
         u = u.slice(0,u.length-1);
         u = u.slice(1);
-        //console.log(u);
         u = u.replace(/\(/g,'a').replace(/\)/g,'(').replace(/a/g,')');
-        //console.log(u);
-        t = '(' + solution(v) +')' + u;
-        //console.log(u);
-        //console.log(u);
-        //answer = u;
-        return t;
+        // 4-4의 뒤에 붙이기
+        result += u;      
+        return result;
     }
-    console.log(answer);
 }
 
 function IsPerfect(oper){
     var Stack = [];
     for(var i in oper){
-        if(oper[i]==='('){
-            Stack.push('i');
-        }
-        else{Stack.pop();}
+        if(oper[i]==='(') Stack.push('i');
+        if(oper[i]===')') Stack.pop();
     }
-    if(Stack.length===0){
-        return true;
-    }
-    else{return false;}
+    if(Stack.length === 0) return true;
+    else return false;
 }
 
 function balancer(oper){
     var Stack = 0;
     var i
-    for(i=0; i<oper.length-1; i++){
-        if(oper[i]==='('){
-            Stack++;
-        }
-        else{Stack--;}
-        if(Stack===0){
-            return i;
-            break;
-        }
+
+    for(i=0; i<oper.length; i++){
+        if(oper[i]==='(') Stack++;
+        if(oper[i]===')') Stack--;
+        if(Stack===0) return i;
     }
 }
-
-//var answer = solution("()))((()");
-//console.log(answer);
-var answer = solution(")(");
-console.log(answer);

@@ -1,24 +1,26 @@
 function solution(n, arr1, arr2) {
     var answer = [];
-    //var orcode = [];
     var orcode = arr1.map((arr1, index)=>{
         return arr1 | arr2[index];
     });
     answer = orcode.map((orcode, index)=>{
-        return pad(orcode.toString(2),n)
+        return tentotwo(orcode,n);
     });
-    //console.log(orcode);
-    answer = answer.map((answer,index)=>{
-        return answer.toString().replace(/1/gi,'#');
+    answer = answer.map(element =>{
+        return element.toString().replace(/1/g,'#').replace(/0/g,' ')
     });
-    answer = answer.map((answer,index)=>{
-        return answer.toString().replace(/0/gi,' ');
-    });
-    console.log(answer);
     return answer;
 }
 
-function pad(n, width) {
-        n = n + '';
-        return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
+function tentotwo(input,width) {
+    input = input.toString(2);
+    if (input.length === width) return input;
+    else{
+        while(input.length !== width){
+            input = '0' + input;
+            if(input.length == width) return input
+        }
+    }
 }
+
+solution(5,	[9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
