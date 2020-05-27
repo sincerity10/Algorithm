@@ -2,7 +2,10 @@ function solution(N, stages) {
     var StageInfo = [];
     for(var i=1 ; i<N+1 ; i++){
         //다른 style reduce로 도달자와 실패자 계산
-        let challenger = stages.reduce((acc,currStage) => acc + ((currStage >= i) ? 1 : 0), 0);
+        //let challenger = stages.reduce((acc,currStage) => acc + ((currStage >= i) ? 1 : 0), 0);
+        let challenger = stages.reduce((acc,currStage) => {
+            return acc + ((currStage >= i) ? 1 : 0);
+        },0);
         let fail = stages.reduce(function(acc, currStage){
             return acc + ((currStage===i) ? 1 : 0)
         },0);
@@ -14,3 +17,5 @@ function solution(N, stages) {
         return (a.FailPer === b.FailPer) ? a.stage - b.stage : b.FailPer - a.FailPer
     }).map(element => element.stage);
 }
+
+console.log(solution(5,[2, 1, 2, 6, 2, 4, 3, 3]	));

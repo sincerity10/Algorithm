@@ -9,7 +9,7 @@ function solution(dartResult) {
                 ScoreStack.pop();
                 ScoreStack.push(10);
             }
-            else{ScoreStack.push(Number(dartResult[index]));}
+            else ScoreStack.push(Number(dartResult[index]));
         }
         else if(dartResult[index]==='D'){
             var tmp=ScoreStack.pop();
@@ -34,8 +34,14 @@ function solution(dartResult) {
             ScoreStack.push(tmp*-1);
         }
     }
-    //console.log(ScoreStack);
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    answer=ScoreStack.reduce(reducer);
+    console.log(ScoreStack);
+    answer = ScoreStack.reduce((acc,CurrentValue) => {
+        return acc += CurrentValue;
+    },0);
     return answer;
 }
+
+console.log(solution("1S2D*3T"));
+console.log(solution("1D2S#10S"));
+console.log(solution("1D2S0T"));
+console.log(solution("1S*2T*3S"));
