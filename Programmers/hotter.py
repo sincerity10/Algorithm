@@ -1,6 +1,7 @@
 def solution(scoville, K):
     sc  = -1
     cnt = 0
+
     while True:
         scoville.sort()
         if scoville[0] >= K:
@@ -12,3 +13,4 @@ def solution(scoville, K):
         cnt += 1
 
     return cnt
+
